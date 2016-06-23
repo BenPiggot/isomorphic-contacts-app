@@ -1,10 +1,16 @@
 import express from 'express';
-import ejs from 'ejs';
+import contacts from './public/contacts.json';
 
 const app = express();
 
-app.get('/', (res, req) => {
-  
+app.set('views', './');
+app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/public'));
+
+app.get('/', (req, res) => {
+  res.render('index', {
+    content: 'Hello'
+  })
 })
 
 app.listen('3000', () => {
